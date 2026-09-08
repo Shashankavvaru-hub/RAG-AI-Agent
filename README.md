@@ -7,7 +7,6 @@
   <img src="images/main.jpg" alt="RAG AI-Agent" style="width: 400px; max-width: 400px; margin-bottom: 20px;" />
   <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
     <img src="images/search.jpg" alt="RAG AI-Agent" style="width: 350px; max-width: 350px;" />
-    <img src="images/about.jpg" alt="RAG AI-Agent" style="width: 350px; max-width: 350px;" />
   </div>
   &#xa0;
 </div>
