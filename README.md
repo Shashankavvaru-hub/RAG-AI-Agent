@@ -12,10 +12,6 @@
   &#xa0;
 </div>
 <!-- demo -->
-<div align="center">
-  <img src="images/demo.gif" alt="RAG AI-Agent" style="width: 350px; max-width: 350px; margin-top: 20px;" />
-</div>
-
 
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/Shashankavvaru-hub/RAG-AI-Agent?color=56BEB8">
@@ -58,8 +54,6 @@
 </p>
 
 <br>
-
-## :dart: About
 
 ## :dart: About
 
