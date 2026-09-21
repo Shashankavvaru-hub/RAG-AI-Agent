@@ -195,7 +195,7 @@ $ pip install -r requirements.txt
 $ echo "OPENAI_API_KEY=your_api_key_here" > .env
 
 # Start the backend server
-$ uvicorn app:app --reload
+$ uvicorn main:app --reload
 
 # In a separate terminal, navigate to the frontend directory
 $ cd agent-frontend
