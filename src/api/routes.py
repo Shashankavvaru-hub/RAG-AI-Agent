@@ -11,6 +11,7 @@ from src.db.database import get_db, DBChat, DBMessage
 from src.db.schemas import Chat, Message
 from src.llm.llm_client import agent_executor
 from src.utils.helpers import process_files
+from src.vectordb.vector_store import delete_chat_data
 
 router = APIRouter()
 
@@ -65,6 +66,8 @@ async def delete_chat(chat_id: int, db: Session = Depends(get_db)):
     chat_folder = os.path.join(UPLOAD_FOLDER, str(chat_id))
     if os.path.exists(chat_folder):
         shutil.rmtree(chat_folder)
+        
+    delete_chat_data(chat_id)
     
     return JSONResponse(content={"detail": "Chat deleted successfully."})
 
@@ -106,7 +109,7 @@ async def send_chat_message(
             with open(file_path, "wb") as f:
                 shutil.copyfileobj(file.file, f)
   
-        success, files_message = process_files(files_paths=files_paths)
+        success, files_message = process_files(files_paths=files_paths, chat_id=chat_id)
         if not success:
             raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=files_message)
         
@@ -120,7 +123,7 @@ async def send_chat_message(
     
     reasoning_steps = []
     if query and query != "":
-        response = agent_executor(query_text=query, agent=agent)
+        response = agent_executor(query_text=query, agent=agent, chat_id=chat_id)
         final_response = response['response']  
         if response['sources']:
             final_response += '\n\nSources:\n' + "\n".join(response['sources'])

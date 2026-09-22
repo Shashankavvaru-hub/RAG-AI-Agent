@@ -60,3 +60,17 @@ def close_vector_db():
     if _vector_db is not None:
         _vector_db = None
         print("Vector database connection closed.")
+
+def delete_chat_data(chat_id):
+    """
+    Delete all vector data associated with a specific chat_id
+    """
+    vector_db = get_vector_db()
+    if vector_db is not None:
+        try:
+            # Langchain's Chroma wrapper provides access to the underlying collection
+            vector_db._collection.delete(where={"chat_id": str(chat_id)})
+            print(f"Successfully deleted vector data for chat_id: {chat_id}")
+        except Exception as e:
+            print(f"Error deleting vector data for chat_id {chat_id}: {e}")
+

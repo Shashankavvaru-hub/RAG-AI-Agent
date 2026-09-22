@@ -31,8 +31,8 @@ def parse_reasoning_steps(result):
             })
     return response, reasoning_steps
 
-def agent_executor(query_text:str,agent=False):
-    rlevant_docs = query_data(query_text)
+def agent_executor(query_text:str, agent=False, chat_id=None):
+    rlevant_docs = query_data(query_text, chat_id=chat_id)
     # if rlevant_docs:
     #     return "No relevant documents found."
     context_text = "\n\n---\n\n".join([doc.page_content for doc, _score in rlevant_docs])
